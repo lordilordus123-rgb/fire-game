@@ -1,59 +1,8 @@
 [gd_scene format=3 uid="uid://3rpjb8o8e6e6"]
 
-[ext_resource type="Script" uid="uid://ddayxr65tqiyg" path="res://floor.gd" id="1_6uqi0"]
-[ext_resource type="Script" uid="uid://bkqkjttdt2sq" path="res://character_body_3d.gd" id="1_37kl0"]
-[ext_resource type="Shader" uid="uid://dctj5aie1cyxu" path="res://cherckered.gdshader" id="2_ppyta"]
+[sub_resource type="TileSet" id="TileSet_grofb"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_grofb"]
+[node name="Node2D" type="Node2D" unique_id=583200212]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_grofb"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_grofb"]
-render_priority = 0
-shader = ExtResource("2_ppyta")
-shader_parameter/color1 = Color(1, 1, 1, 1)
-shader_parameter/color2 = Color(0.2, 0.2, 0.2, 1)
-shader_parameter/groesse = 10.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_grofb"]
-material = SubResource("ShaderMaterial_grofb")
-size = Vector3(16, 1, 16)
-
-[sub_resource type="Skin" id="Skin_i1m3l"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_grofb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1m3l"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_grofb"]
-material = SubResource("StandardMaterial3D_i1m3l")
-
-[node name="Node3D" type="Node3D" unique_id=481168300]
-
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1527591344]
-physics_material_override = SubResource("PhysicsMaterial_grofb")
-script = ExtResource("1_6uqi0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=302102557]
-shape = SubResource("BoxShape3D_grofb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1066133574]
-mesh = SubResource("BoxMesh_grofb")
-skin = SubResource("Skin_i1m3l")
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1180256440]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("1_37kl0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=307178513]
-shape = SubResource("CapsuleShape3D_grofb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1873380347]
-mesh = SubResource("CapsuleMesh_grofb")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1466279549]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 2, 1.5, 0)
-
-[node name="AreaLight3D" type="AreaLight3D" parent="CharacterBody3D/Camera3D" unique_id=447048960]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=469597679]
+tile_set = SubResource("TileSet_grofb")
