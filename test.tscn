@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://3rpjb8o8e6e6"]
+
+[ext_resource type="Script" uid="uid://bkqkjttdt2sq" path="res://character_body_3d.gd" id="1_37kl0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_grofb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grofb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uh7m"]
+albedo_color = Color(0.38928655, 0.38928664, 0.38928658, 1)
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_grofb"]
+material = SubResource("StandardMaterial3D_8uh7m")
+size = Vector3(13.432678, 0.9522705, 6.8883057)
+
+[sub_resource type="Skin" id="Skin_i1m3l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf4mk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_grofb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1m3l"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_grofb"]
+material = SubResource("StandardMaterial3D_i1m3l")
+
+[node name="Node3D" type="Node3D" unique_id=481168300]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1527591344]
+physics_material_override = SubResource("PhysicsMaterial_grofb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=302102557]
+shape = SubResource("BoxShape3D_grofb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1066133574]
+mesh = SubResource("BoxMesh_grofb")
+skin = SubResource("Skin_i1m3l")
+surface_material_override/0 = SubResource("StandardMaterial3D_mf4mk")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1180256440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_37kl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=307178513]
+shape = SubResource("CapsuleShape3D_grofb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1873380347]
+mesh = SubResource("CapsuleMesh_grofb")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1466279549]
+transform = Transform3D(0.70710677, -0.45451945, 0.5416752, 0, 0.76604444, 0.6427876, -0.70710677, -0.45451945, 0.5416752, 1.5, 1.5, 1.5)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/Camera3D" unique_id=2128612946]
